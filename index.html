@@ -1,12 +1,923 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jilinzhyc.com</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZHYC & WMWM | Company Profile</title>
+  <meta
+    name="description"
+    content="吉林市中海运诚商贸有限公司与 WMWM UNITED INVESTMENT HOLDING INC. 公司简介单页网站"
+  />
+  <style>
+    :root {
+      --bg: #f5f8fc;
+      --surface: rgba(255, 255, 255, 0.94);
+      --surface-strong: #ffffff;
+      --text: #132238;
+      --muted: #5e7087;
+      --line: #d8e2ef;
+      --primary: #0c5fd1;
+      --primary-deep: #073e8f;
+      --accent: #1e9b65;
+      --shadow: 0 18px 48px rgba(12, 50, 106, 0.12);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --max: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(12, 95, 209, 0.12), transparent 34%),
+        radial-gradient(circle at top right, rgba(30, 155, 101, 0.10), transparent 32%),
+        linear-gradient(180deg, #eef5fb 0%, #f7fbff 46%, #f5f8fc 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(245, 248, 252, 0.84);
+      border-bottom: 1px solid rgba(216, 226, 239, 0.92);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brandline {
+      min-width: 0;
+    }
+
+    .brandline strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .brandline span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 52vw;
+    }
+
+    .nav-wrap {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tabs {
+      display: inline-flex;
+      gap: 10px;
+      padding: 2px;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover,
+    .tab-btn:focus-visible {
+      color: var(--primary-deep);
+      border-color: rgba(12, 95, 209, 0.32);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #0f77d8 52%, #1e9b65 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(12, 95, 209, 0.22);
+    }
+
+    main {
+      padding: 28px 0 80px;
+    }
+
+    .panel {
+      display: none;
+      animation: fadeUp 0.28s ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(216, 226, 239, 0.82);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+      padding-top: 18px;
+    }
+
+    .hero-copy {
+      padding: 40px;
+    }
+
+    .hero-brand {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand-visual {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .brand-visual img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(12, 95, 209, 0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 58ch;
+    }
+
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(242,247,253,0.96));
+      border: 1px solid rgba(216, 226, 239, 0.9);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: var(--primary-deep);
+    }
+
+    .stat span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .section {
+      padding-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .content-card {
+      padding: 28px;
+    }
+
+    .lang-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .rich-text p {
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .rich-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(12, 50, 106, 0.06);
+    }
+
+    .route-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .route-item {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(242,247,253,0.92));
+      border: 1px solid var(--line);
+    }
+
+    .route-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--primary-deep);
+      font-size: 15px;
+    }
+
+    .route-item span {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .feature {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.84);
+    }
+
+    .feature h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(248, 251, 255, 0.96);
+      border: 1px solid rgba(216, 226, 239, 0.92);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+
+    .callout {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(12,95,209,0.08), rgba(30,155,101,0.08));
+      border: 1px solid rgba(12,95,209,0.14);
+    }
+
+    .footnote {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px dashed rgba(12, 95, 209, 0.28);
+      background: rgba(255,255,255,0.72);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .global-main {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .global-left {
+      padding: 34px;
+      min-height: 920px;
+    }
+
+    .global-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .global-visual {
+      margin-top: 28px;
+      border: 1px solid #d8e2ef;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(12, 50, 106, 0.08);
+    }
+
+    .global-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(216, 226, 239, 0.9);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1100px) {
+      .global-main {
+        grid-template-columns: 1fr;
+      }
+
+      .global-left {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hero,
+      .grid-2,
+      .split,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brandline span {
+        max-width: none;
+      }
+
+      .hero-copy,
+      .content-card,
+      .hero-brand,
+      .global-left {
+        padding: 22px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>网站已上线</h1>
-  <p>这是我的第一个 GitHub Pages 静态网站。</p>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brandline">
+        <strong>ZHYC &amp; WMWM</strong>
+        <span>吉林市中海运诚商贸有限公司 · WMWM UNITED INVESTMENT HOLDING INC.</span>
+      </div>
+
+      <div class="nav-wrap" aria-label="页面标签导航">
+        <nav class="tabs" role="tablist">
+          <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-home" data-tab="tab-home">首页</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-overview" data-tab="tab-overview">公司简介</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-domestic" data-tab="tab-domestic">国内物流网</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-customers" data-tab="tab-customers">国内客户</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-global" data-tab="tab-global">国际物流网络</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trucking" data-tab="tab-trucking">北美卡车</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-ocean" data-tab="tab-ocean">海运服务</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-air" data-tab="tab-air">空运服务</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- 首页 -->
+    <section id="tab-home" class="panel active" role="tabpanel" aria-hidden="false">
+      <div class="hero">
+        <article class="card hero-copy">
+          <div class="eyebrow">Company Profile</div>
+          <h1>国际货运代理与北美物流协同平台</h1>
+          <p class="subtitle">
+            以 <strong>ZHYC</strong> 为国内综合物流服务主体，以 <strong>WMWM</strong> 为北美代理及物流平台，
+            构建覆盖国内沿海港口、美国干线运输与加拿大主要市场的协同物流网络。
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>2007.05</strong>
+              <span>ZHYC 成立时间</span>
+            </div>
+            <div class="stat">
+              <strong>2020.05</strong>
+              <span>WMWM 北美平台成立时间</span>
+            </div>
+            <div class="stat">
+              <strong>Ocean · Air · Trucking</strong>
+              <span>海运、空运、陆运与供应链协同</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card hero-brand">
+          <div class="brand-visual">
+            <img src="./images/contact_s5_s3_s4.jpg" alt="ZHYC 与 WMWM 品牌展示素材" />
+          </div>
+          <p class="note">
+            品牌名称与 Logo 按已授权素材展示，用于公司官网与业务展示页面。
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section id="tab-overview" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <h2>公司简介 Company Overview</h2>
+          <p>ZHYC 成立于 2007 年，核心业务涵盖海运、空运、陆运及综合供应链解决方案，服务国内与国际货运场景。</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card content-card rich-text">
+          <span class="lang-tag">中文</span>
+          <p>
+            吉林市中海运诚商贸有限公司成立于 2007 年 5 月，是一家专注于国际货运代理和多式联运的综合物流服务商。
+          </p>
+          <p>
+            公司提供全方位物流服务，包括海运、空运、陆运及综合供应链解决方案，支持国内与国际货物运输。
+          </p>
+        </article>
+
+        <article class="card content-card rich-text">
+          <span class="lang-tag">English</span>
+          <p>
+            Established in May 2007, Jilin Zhonghai Yuncheng Trading Co., Ltd. is a comprehensive logistics service provider specializing in international freight forwarding and multimodal transportation.
+          </p>
+          <p>
+            The company provides a full range of logistics services including ocean freight, air freight, trucking, and integrated supply chain solutions, supporting both domestic and international cargo transportation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 国内物流网 -->
+    <section id="tab-domestic" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="split">
+        <article class="card content-card rich-text">
+          <div class="section-head">
+            <div>
+              <h2>国内物流网 National Logistics Network</h2>
+              <p>以东北三省为起点，延伸至长江水系、东南沿海、广州珠江水系、广西等主要沿海港口。</p>
+            </div>
+          </div>
+
+          <p>公司国内网络覆盖多条主要物流通道，可支持集港、中转、报关协同及多式联运衔接。</p>
+          <p>依托成熟的港口与干线资源，形成以东北为出发点、面向全国主要沿海口岸的物流布局。</p>
+
+          <div class="chips">
+            <div class="chip">东北三省</div>
+            <div class="chip">长江水系</div>
+            <div class="chip">东南沿海</div>
+            <div class="chip">广州珠江水系</div>
+            <div class="chip">广西沿海口岸</div>
+          </div>
+        </article>
+
+        <article class="card content-card">
+          <h3>服务特点</h3>
+          <div class="feature-grid">
+            <div class="feature">
+              <h4>港口衔接</h4>
+              <p>支持主要沿海港口装卸、订舱、集港与转运协同。</p>
+            </div>
+            <div class="feature">
+              <h4>内陆集散</h4>
+              <p>面向区域客户组织内陆提送货与物流分拨。</p>
+            </div>
+            <div class="feature">
+              <h4>多式联运</h4>
+              <p>可衔接海运、陆运、空运及供应链配套服务。</p>
+            </div>
+            <div class="feature">
+              <h4>业务协同</h4>
+              <p>与国际物流网络联动，提升跨区域运输效率。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 国内客户 -->
+    <section id="tab-customers" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="section-head">
+        <div>
+          <h2>国内客户 Domestic Customers</h2>
+          <p>面向工贸企业、进出口客户及供应链合作伙伴，提供稳定的物流执行与运力协同服务。</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card content-card">
+          <h3>客户类型</h3>
+          <ul class="bullet-list">
+            <li>制造业客户 / Manufacturing enterprises</li>
+            <li>进出口贸易客户 / Import & export traders</li>
+            <li>跨境供应链客户 / Cross-border supply chain partners</li>
+            <li>长期物流合作客户 / Long-term logistics partners</li>
+          </ul>
+        </article>
+
+        <article class="card content-card">
+          <h3>服务价值</h3>
+          <ul class="bullet-list">
+            <li>提供稳定的订舱、运输与转运支持</li>
+            <li>支持多节点、多区域业务协同</li>
+            <li>提升国内到国际运输链条的连续性</li>
+            <li>降低跨区域运输沟通与执行成本</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 国际物流网络 -->
+    <section id="tab-global" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="global-main">
+        <article class="card global-left rich-text">
+          <h2>国际物流网络 Global Logistics Network</h2>
+          <p>覆盖国内起运、国际海空运代理、北美内陆配送及加拿大市场延伸服务。</p>
+
+          <h3 style="margin-top: 26px;">WMWM UNITED INVESTMENT HOLDING INC.</h3>
+          <p>
+            分公司于 2020 年 5 月在加拿大成立，作为北美代理及物流平台，专注于美国和加拿大范围内的货运协调、卡车运输服务及内陆分拨。
+          </p>
+          <p>
+            该平台负责美国范围内的内陆物流运营，并延伸服务至加拿大主要市场，支持美加之间的跨境货物运输。
+          </p>
+
+          <div class="global-visual">
+            <img src="./images/s5_4.png" alt="North America logistics network map" />
+          </div>
+        </article>
+
+        <div class="global-right">
+          <article class="card content-card">
+            <h3>北美主要物流路线</h3>
+            <div class="route-list">
+              <div class="route-item">
+                <strong>US Route 01</strong>
+                <span>California (CA) → Minnesota (MN)</span>
+              </div>
+              <div class="route-item">
+                <strong>US Route 02</strong>
+                <span>California (CA) → New Jersey (NJ)</span>
+              </div>
+              <div class="route-item">
+                <strong>US Route 03</strong>
+                <span>California (CA) → Georgia (GA)</span>
+              </div>
+              <div class="route-item">
+                <strong>Canada Coverage</strong>
+                <span>Greater Vancouver · GTA · Ottawa · Calgary</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card content-card">
+            <h3>国际海运航线</h3>
+            <div class="route-list">
+              <div class="route-item">
+                <strong>Europe - Mediterranean</strong>
+                <span>欧洲 - 地中海航线</span>
+              </div>
+              <div class="route-item">
+                <strong>Hamburg</strong>
+                <span>汉堡航线</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 北美卡车 -->
+    <section id="tab-trucking" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="service-grid">
+        <article class="card content-card rich-text">
+          <h2>北美卡车 North America Trucking</h2>
+          <p>
+            北美卡车运输服务围绕美国主要州际干线与加拿大重点区域展开，可支持内陆转运、区域配送及跨境衔接。
+          </p>
+          <p>
+            服务体系与国际海运代理业务联动，形成从亚洲出口到北美目的地的端到端运输链路。
+          </p>
+
+          <ul class="bullet-list">
+            <li>美国主要州际干线运输</li>
+            <li>加拿大主要区域配送</li>
+            <li>港口提货与目的港延伸配送</li>
+            <li>跨境运输协同与节点衔接</li>
+          </ul>
+        </article>
+
+        <article class="card content-card">
+          <h3>能力重点</h3>
+          <div class="feature-grid">
+            <div class="feature">
+              <h4>干线运输</h4>
+              <p>覆盖核心州际干线与重点目的地区域。</p>
+            </div>
+            <div class="feature">
+              <h4>区域配送</h4>
+              <p>支持仓到门、门到仓及分拨转运。</p>
+            </div>
+            <div class="feature">
+              <h4>港口联动</h4>
+              <p>与海运到港业务协同，缩短衔接时间。</p>
+            </div>
+            <div class="feature">
+              <h4>跨境协同</h4>
+              <p>服务美加之间的延伸运输需求。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 海运服务 -->
+    <section id="tab-ocean" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="service-grid">
+        <article class="card content-card rich-text">
+          <h2>海运服务 Ocean Freight</h2>
+          <p>
+            提供专业国际海运代理解决方案，支持亚洲与国际市场之间的货物运输与供应链协同。
+          </p>
+          <p>
+            可根据客户货量、目的港与时效需求，安排集拼、整箱、转运及后续目的港物流衔接。
+          </p>
+
+          <ul class="bullet-list">
+            <li>FCL / LCL 订舱与舱位协调</li>
+            <li>集拼与国际运输协调</li>
+            <li>目的港转运与提送货衔接</li>
+            <li>跨区域海运物流方案支持</li>
+          </ul>
+        </article>
+
+        <article class="card content-card">
+          <div class="callout">
+            <h3>服务重点</h3>
+            <p>
+              海运服务与北美内陆卡车网络协同使用时，可形成更完整的国际物流解决方案，
+              提高目的港落地后的配送连续性。
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 空运服务 -->
+    <section id="tab-air" class="panel" role="tabpanel" aria-hidden="true">
+      <div class="service-grid">
+        <article class="card content-card rich-text">
+          <h2>空运服务 Air Freight</h2>
+          <p>
+            提供面向时效型业务的国际空运代理服务，适用于高时效、轻货、高价值货物等运输需求。
+          </p>
+          <p>
+            服务内容涵盖订舱协调、货运衔接、目的港操作配合及后续配送支持。
+          </p>
+
+          <ul class="bullet-list">
+            <li>国际空运订舱</li>
+            <li>时效型货物运输支持</li>
+            <li>港到港 / 门到门方案衔接</li>
+            <li>与海运、陆运配套协同</li>
+          </ul>
+        </article>
+
+        <article class="card content-card">
+          <h3>适用场景</h3>
+          <div class="feature-grid">
+            <div class="feature">
+              <h4>高时效业务</h4>
+              <p>适合交期紧张或快速补货场景。</p>
+            </div>
+            <div class="feature">
+              <h4>高价值货物</h4>
+              <p>适合对运输效率与稳定性要求较高的货物。</p>
+            </div>
+            <div class="feature">
+              <h4>跨区域协同</h4>
+              <p>可衔接国内集货与目的港延伸配送。</p>
+            </div>
+            <div class="feature">
+              <h4>方案补充</h4>
+              <p>作为海运方案之外的时效补充选项。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 ZHYC &amp; WMWM. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll(".tab-btn");
+      const panels = document.querySelectorAll(".panel");
+
+      function activateTab(tabId) {
+        buttons.forEach((btn) => {
+          const active = btn.dataset.tab === tabId;
+          btn.classList.toggle("active", active);
+          btn.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach((panel) => {
+          const active = panel.id === tabId;
+          panel.classList.toggle("active", active);
+          panel.setAttribute("aria-hidden", active ? "false" : "true");
+        });
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activateTab(btn.dataset.tab);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
